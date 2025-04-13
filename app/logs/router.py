@@ -1,6 +1,7 @@
+from datetime import datetime
 from typing import List
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.logs import service
@@ -12,7 +13,10 @@ router = APIRouter(prefix="/logs", tags=["logs"])
 
 @router.get("/", response_model=List[LogResponseSchema])
 def get_logs(
-    # TODO
+    start: datetime | None = Query(None),
+    end: datetime | None = Query(None),
+    level: str | None = Query(None),
+    tag: str | None = Query(None),
     db: Session = Depends(get_db),
 ):
-    return service.get_logs(db)
+    return service.get_logs(start, end, level, tag, db)
