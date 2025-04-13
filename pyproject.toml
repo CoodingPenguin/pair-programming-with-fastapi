@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "pair-programming-with-fastapi"
+version = "0.1.0"
+description = "learn pair programming with fastapi"
+authors = ["CoodingPenguin <coodingpenguin@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.12"
+uvicorn = {extras = ["standard"], version = "^0.34.0"}
+sqlalchemy = "^2.0.40"
+jinja2 = "^3.1.6"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.1"
+autoflake = "^2.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+format = "scripts.format_code:main"
